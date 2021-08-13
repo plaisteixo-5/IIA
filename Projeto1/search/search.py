@@ -87,10 +87,26 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     fringe = util.Stack()
-    print("Start:", problem.getStartState())
-    print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    initial_position = problem.getStartState()
+    fringe.push(initial_position)
+    # print "Fringe: ",fringe
+    # print("Start:", problem.getStartState())
+    # print "Is the start a goal?", problem.isGoalState(problem.getStartState())
+    # print "Start's successors:", problem.getSuccessors(problem.getStartState())
     # input()
+
+    visited_location = set()
+
+    while not fringe.isEmpty():
+        node = fringe.pop()
+        print "Sei la: ", node
+        visited_location.add(node[0])
+        if problem.isGoalState(node[0]):
+            return node[1]
+        successors = problem.getSuccessors(node)
+        for successor in successors:
+            print "Sucessor: ",successor
+
     "*** YOUR CODE HERE ***"
     from game import Directions
     s = Directions.SOUTH
