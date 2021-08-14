@@ -86,38 +86,80 @@ def depthFirstSearch(problem):
     print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
-    fringe = util.Stack()
-    initial_position = problem.getStartState()
-    fringe.push(initial_position)
-    # print "Fringe: ",fringe
-    # print("Start:", problem.getStartState())
-    # print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    # print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    # input()
+    # fringe = util.Stack()
+    # initial_position = problem.getStartState()
+    # fringe.push(initial_position)
+    # # print "Fringe: ",fringe
+    # # print("Start:", problem.getStartState())
+    # # print "Is the start a goal?", problem.isGoalState(problem.getStartState())
+    # # print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    # # input()
 
-    visited_location = set()
+    # visited_location = set()
 
-    while not fringe.isEmpty():
-        node = fringe.pop()
-        print "Sei la: ", node
-        visited_location.add(node[0])
-        if problem.isGoalState(node[0]):
-            return node[1]
-        successors = problem.getSuccessors(node)
+    # while not fringe.isEmpty():
+    #     node = fringe.pop()
+    #     print "Sei la: ", node
+    #     visited_location.add(node[0])
+    #     if problem.isGoalState(node[0]):
+    #         return node[1]
+    #     successors = problem.getSuccessors(node)
+    #     for successor in successors:
+    #         if successor[0] in visited_location:
+    #             continue
+    #         fringe.push((successor[0], successor[1]))
+    #         print "Sucessor: ", successor
+
+    # "*** YOUR CODE HERE ***"
+    # from game import Directions
+    # s = Directions.SOUTH
+    # w = Directions.WEST
+    
+    stack = util.Stack()
+    start_location = problem.getStartState()
+    start_node = (start_location, [])
+    stack.push(start_node)
+    visited_location = [()]
+
+    while not stack.isEmpty():
+
+        position, moves = stack.pop()
+
+        visited_location.append(position)
+        if problem.isGoalState(position):
+            return moves
+        successors = problem.getSuccessors(position)
+        
         for successor in successors:
-            print "Sucessor: ",successor
+            if successor[0] not in visited_location:
+                stack.push((successor[0], moves + [successor[1]]))
 
-    "*** YOUR CODE HERE ***"
-    from game import Directions
-    s = Directions.SOUTH
-    w = Directions.WEST
-    # util.raiseNotDefined()
-    return [s, s]
+    return []
 
 def breadthFirstSearch(problem):
-    """Search the shallowest nodes in the search tree first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    queue = util.Queue()
+    start_location = problem.getStartState()
+    start_node = (start_location, [])
+    # Structure: ((x, x), ['west'])
+    queue.push(start_node)
+    # Structure: [((x, x), ['west']), ((y, y), ['south'])]
+    visited_location = [()]
+    visited_location.append(start_location)
+
+    while not queue.isEmpty():
+        position, moves = queue.pop()
+
+        if problem.isGoalState(position):
+            return moves
+
+        for successor in problem.getSuccessors(position) :
+            if successor[0] in visited_location:
+                continue
+            visited_location.append(successor[0])
+            queue.push((successor[0], moves + [successor[1]])) 
+        
+    return []
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
