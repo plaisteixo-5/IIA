@@ -135,8 +135,25 @@ def breadthFirstSearch(problem):
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    priority_queue = util.PriorityQueue()
+    visited_location = ([])
+
+    start_location = problem.getStartState()
+    priority_queue.push((start_location, [], 0), 0)
+
+    while not priority_queue.isEmpty():
+        position, moves, cost_path = priority_queue.pop()
+
+        if position not in visited_location:
+            visited_location.append(position)
+
+            if problem.isGoalState(position):
+                return moves
+            
+            for next_pos, movement, cost in problem.getSuccessors(position):
+                total_cost = cost + cost_path
+                priority_queue.push((next_pos, moves + [movement], total_cost), total_cost)
+    return []
 
 def nullHeuristic(state, problem=None):
     """
@@ -147,7 +164,26 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
-    "*** YOUR CODE HERE ***"
+    priority_queue = util.PriorityQueue()
+    visited_positions = []
+    start_location = problem.getStartState()
+
+    priority_queue.push((start_location, [], 0), 0)
+
+    while not priority_queue.isEmpty():
+        position, moves, cost_path = priority_queue.pop()
+
+        if position not in visited_positions:
+            visited_positions.append(position)
+
+            if problem.isGoalState(position):
+                return moves
+            
+            for next_pos, move, cost in problem.getSuccessors(position):
+                total_cost = cost + cost_path
+                heuristic_value = total_cost + heuristic(next_pos, problem)
+                priority_queue.push((next_pos, moves + [move], total_cost), heuristic_value)
+
     util.raiseNotDefined()
 
 
