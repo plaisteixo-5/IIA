@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="Age <= 28.5\ngini = 0.4\nsamples = 391\nvalue = [411, 203]"] ;
+1 [label="Glucose <= 143.5\ngini = 0.3\nsamples = 183\nvalue = [251, 46]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="BMI <= 42.2\ngini = 0.1\nsamples = 160\nvalue = [241, 21]"] ;
+1 -> 2 ;
+3 [label="gini = 0.1\nsamples = 153\nvalue = [234, 14]"] ;
+2 -> 3 ;
+4 [label="gini = 0.5\nsamples = 7\nvalue = [7, 7]"] ;
+2 -> 4 ;
+5 [label="SkinThickness <= 41.5\ngini = 0.4\nsamples = 23\nvalue = [10, 25]"] ;
+1 -> 5 ;
+6 [label="gini = 0.5\nsamples = 18\nvalue = [10, 18]"] ;
+5 -> 6 ;
+7 [label="gini = 0.0\nsamples = 5\nvalue = [0, 7]"] ;
+5 -> 7 ;
+8 [label="Glucose <= 129.5\ngini = 0.5\nsamples = 208\nvalue = [160, 157]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="Glucose <= 108.5\ngini = 0.4\nsamples = 115\nvalue = [117, 48]"] ;
+8 -> 9 ;
+10 [label="gini = 0.3\nsamples = 61\nvalue = [75, 17]"] ;
+9 -> 10 ;
+11 [label="gini = 0.5\nsamples = 54\nvalue = [42, 31]"] ;
+9 -> 11 ;
+12 [label="BMI <= 27.9\ngini = 0.4\nsamples = 93\nvalue = [43, 109]"] ;
+8 -> 12 ;
+13 [label="gini = 0.5\nsamples = 14\nvalue = [15, 11]"] ;
+12 -> 13 ;
+14 [label="gini = 0.3\nsamples = 79\nvalue = [28, 98]"] ;
+12 -> 14 ;
+}

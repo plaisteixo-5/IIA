@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="Glucose <= 132.5\ngini = 0.5\nsamples = 383\nvalue = [397, 217]"] ;
+1 [label="Insulin <= 153.5\ngini = 0.3\nsamples = 269\nvalue = [329, 94]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Insulin <= 9.0\ngini = 0.3\nsamples = 232\nvalue = [291, 65]"] ;
+1 -> 2 ;
+3 [label="gini = 0.4\nsamples = 140\nvalue = [160, 53]"] ;
+2 -> 3 ;
+4 [label="gini = 0.2\nsamples = 92\nvalue = [131, 12]"] ;
+2 -> 4 ;
+5 [label="Glucose <= 105.0\ngini = 0.5\nsamples = 37\nvalue = [38, 29]"] ;
+1 -> 5 ;
+6 [label="gini = 0.2\nsamples = 7\nvalue = [1, 10]"] ;
+5 -> 6 ;
+7 [label="gini = 0.4\nsamples = 30\nvalue = [37, 19]"] ;
+5 -> 7 ;
+8 [label="Pregnancies <= 7.5\ngini = 0.5\nsamples = 114\nvalue = [68, 123]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="Glucose <= 158.5\ngini = 0.5\nsamples = 88\nvalue = [63, 79]"] ;
+8 -> 9 ;
+10 [label="gini = 0.5\nsamples = 49\nvalue = [50, 29]"] ;
+9 -> 10 ;
+11 [label="gini = 0.3\nsamples = 39\nvalue = [13, 50]"] ;
+9 -> 11 ;
+12 [label="Pregnancies <= 9.5\ngini = 0.2\nsamples = 26\nvalue = [5, 44]"] ;
+8 -> 12 ;
+13 [label="gini = 0.0\nsamples = 15\nvalue = [0, 24]"] ;
+12 -> 13 ;
+14 [label="gini = 0.3\nsamples = 11\nvalue = [5, 20]"] ;
+12 -> 14 ;
+}

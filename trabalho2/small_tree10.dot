@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="rounded", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="BMI <= 26.4\ngini = 0.5\nsamples = 382\nvalue = [374, 240]"] ;
+1 [label="Glucose <= 153.0\ngini = 0.1\nsamples = 82\nvalue = [114, 6]"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="BMI <= 9.6\ngini = 0.0\nsamples = 77\nvalue = [113, 1]"] ;
+1 -> 2 ;
+3 [label="gini = 0.2\nsamples = 5\nvalue = [6, 1]"] ;
+2 -> 3 ;
+4 [label="gini = 0.0\nsamples = 72\nvalue = [107, 0]"] ;
+2 -> 4 ;
+5 [label="Insulin <= 156.0\ngini = 0.3\nsamples = 5\nvalue = [1, 5]"] ;
+1 -> 5 ;
+6 [label="gini = 0.0\nsamples = 4\nvalue = [0, 5]"] ;
+5 -> 6 ;
+7 [label="gini = 0.0\nsamples = 1\nvalue = [1, 0]"] ;
+5 -> 7 ;
+8 [label="Glucose <= 122.5\ngini = 0.5\nsamples = 300\nvalue = [260, 234]"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="BMI <= 27.2\ngini = 0.4\nsamples = 156\nvalue = [184, 70]"] ;
+8 -> 9 ;
+10 [label="gini = 0.2\nsamples = 4\nvalue = [1, 7]"] ;
+9 -> 10 ;
+11 [label="gini = 0.4\nsamples = 152\nvalue = [183, 63]"] ;
+9 -> 11 ;
+12 [label="DiabetesPedigreeFunction <= 0.3\ngini = 0.4\nsamples = 144\nvalue = [76, 164]"] ;
+8 -> 12 ;
+13 [label="gini = 0.5\nsamples = 55\nvalue = [47, 49]"] ;
+12 -> 13 ;
+14 [label="gini = 0.3\nsamples = 89\nvalue = [29, 115]"] ;
+12 -> 14 ;
+}
